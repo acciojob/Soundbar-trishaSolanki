@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	function stopSound(){
 		if(audio){
 			audio.pause();
-			audio.currentTime = 0;
+			audio.currentTime = 9;
 		}
 	}
 
