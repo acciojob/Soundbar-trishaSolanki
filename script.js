@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function(){
 	function stopSound(){
 		if(audio){
 			audio.pause();
-			audio.currentTime = 9;
+			audio.currentTime = 0;
 		}
 	}
 
 	//eventListener for plays button
-	buttons.forEach(button =>{
+	buttons.forEach(button => {
 		button.addEventListener('click', function() {
 			const sound = this.getAttribute('data-sound');
 			playSound(sound);
