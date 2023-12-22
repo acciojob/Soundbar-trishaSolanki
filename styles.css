@@ -2,22 +2,24 @@
 body{
 	 font-family: Arial, sans-serif;
   text-align: center;
-  margin: 50px;
+  margin: 2px;
+	background-color:#A164DF;
 }
 .btn{
 	 padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
-  background-color: #3498db;
+  background-color:#663399;
   color: white;
   border: none;
   border-radius: 5px;
+	margin-block:200px;
 }
 .stop{
 	 padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
-  background-color: #3498db;
+  background-color: #663399;
   color: white;
   border: none;
   border-radius: 5px;

@@ -1,30 +1,28 @@
 //your JS code here. If required.
-document.addEventListener('DOMContentLoaded', function(){
-	const buttons = document.querySelectorAll('.btn');
-	const stopButton = document.querySelector('.stop');
-	let audio;
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.btn');
+    const stopButton = document.querySelector('.stop');
+    const audios = document.querySelectorAll('audio');
 
-	//funtion to play sound
-	function playSound(sound){
-		audio = new Audio(`sounds/${sound}`);
-		audio.play();
-		
-	}
+    // Function to play the audio based on the data-sound attribute
+    function playAudio(audioSrc) {
+        const audio = new Audio(audioSrc);
+        audio.play();
+    }
 
-	//function to stop sound
-	function stopSound(){
-		if(audio){
-			audio.pause();
-			audio.currentTime = 0;
-		}
-	}
+    // Event listeners for each button
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const soundSrc = this.getAttribute('data-sound');
+            playAudio(soundSrc);
+        });
+    });
 
-	//eventListener for plays button
-	buttons.forEach(button => {
-		button.addEventListener('click', function() {
-			const sound = this.getAttribute('data-sound');
-			playSound(sound);
-		});
-	});
-	stopButton.addEventListener('click', stopSound);
+    // Event listener for the stop button
+    stopButton.addEventListener('click', function() {
+        audios.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    });
 });
