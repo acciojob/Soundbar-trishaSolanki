@@ -1,28 +1,26 @@
 //your JS code here. If required.
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.btn');
-    const stopButton = document.querySelector('.stop');
-    const audios = document.querySelectorAll('audio');
-
-    // Function to play the audio based on the data-sound attribute
-    function playAudio(audioSrc) {
-        const audio = new Audio(audioSrc);
-        audio.play();
+ 
+document.addEventListener("DOMContentLoaded", function () {
+  const buttonsContainer = document.getElementById("buttons");
+  
+  function playAudio(className) {
+    const audio = document.querySelector(`audio.${className}`);
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
     }
-
-    // Event listeners for each button
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const soundSrc = this.getAttribute('data-sound');
-            playAudio(soundSrc);
-        });
-    });
-
-    // Event listener for the stop button
-    stopButton.addEventListener('click', function() {
-        audios.forEach(audio => {
-            audio.pause();
-            audio.currentTime = 0;
-        });
-    });
+  }
+ 
+  buttonsContainer.addEventListener("click", function (event) {
+    const target = event.target;
+ 
+    if (target.classList.contains("btn")) {
+      playAudio(target.classList[1]); // Assuming the second class is the sound class.
+    } else if (target.classList.contains("stop")) {
+      document.querySelectorAll("audio").forEach(function (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
+  });
 });
